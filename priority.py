@@ -1,6 +1,6 @@
 import sys
 from collections import defaultdict
-import numpy as np
+from random import choice
 
 
 
@@ -18,19 +18,24 @@ def load_priorities():
 
 def main(m):
     tasks = load_priorities()
+    choices = []
     for subj in tasks.keys():
         timed_tasks = [item for item in tasks[subj].items() if item[1] < m]
-        num_tasks = len(timed_tasks)
-        if num_tasks == 0:
-            print "loljk"
+        if len(timed_tasks) == 0:
+            continue
         else:
-            print "Here is a task you could do in this topic"
-            print '\t ', subj
-            index = np.random.choice(num_tasks)
-            task = timed_tasks[index]
-            print "\tYou should do this: ", task[0]
-            print "\tIt will take you", task[1], "minutes."
+            task = choice(timed_tasks)
+            choices.append((subj, task[0], task[1]))
+
+    if len(choices) > 0:
+        suggestion = choice(choices)
+        print "Here is a task you could do in this topic: ",  suggestion[0]
+        print "\tYou should do this: ", suggestion[1]
+        print "\tIt will take you", suggestion[2], "minutes."
 
 if __name__ == '__main__':
-    minutes = sys.argv[1]
-    main(minutes)
+    if len(sys.argv) <= 1:
+        print "Usage error: Please specify a time interval"
+    else:
+        minutes = sys.argv[1]
+        main(minutes)
