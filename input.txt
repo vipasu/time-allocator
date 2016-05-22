@@ -2,7 +2,9 @@
 Math, Group Theory Text, 20
 Personal, Journal, 10
 Personal, Meditate, 5
-Research, Browse arxive headlines, 15
+Research, Browse arxiv headlines, 15
 Language, Read a spanish poem, 10
+Relaxing, Play Piano, 20
+Relaxing, Dance Break, 10
 Chores, Clean desk, 10
 Chores, Manage Email, 20
